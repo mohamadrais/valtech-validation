@@ -1,0 +1,49 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img src="https://cdn2.hubspot.net/hubfs/1823543/partners-page-temp/valtech-logo.png">
+</div>
+<!-- app.component.html -->
+<div class="content" role="main">
+  <div class="row container-fluid">
+    <div class="col-12 mb-5">
+      <img src="../assets/image/banner.svg" class="banner">
+      <img src="../assets/image/banner-mobile.svg" class="banner-mobile">
+    </div>
+    <div class="col col-sm col-md-4">
+      <div class="dotted"></div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-8">
+      <h4>This is Validation Test by</h4>
+      <h2>
+        <b>{{myName}}</b>
+      </h2>
+      <form [formGroup]="angForm" novalidate class="mt-5">
+            <div class="form-group">
+                <label>Name:</label>
+                <input class="form-control" formControlName="name" type="text">
+            </div>
+            <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['name'].errors.required">
+                  Name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input class="form-control" formControlName="address" type="text">
+            </div>
+            <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['address'].touched)" class="alert alert-danger">
+                <div *ngIf="angForm.controls['address'].errors.required">
+                  Email is required.
+                </div>
+            </div>
+            <button type="submit"
+                [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+                Save
+            </button>
+      </form>
+      <br />
+      <p>Form value: {{ angForm.value | json }}</p>
+      <p>Form status: {{ angForm.status | json }}</p>
+    </div>
+  </div>
+</div>
